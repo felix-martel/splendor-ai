@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 import random
-import time
-import State
+from State import State
 import GameConstants as game
 
 
@@ -26,17 +24,17 @@ class Environment:
         return(self.state.get_player(0))
     
     def get_step_reward(self, player):
-        return self.state.last_reward(player)
+        return self.state.get_step_reward(player)
     
     def take_action(self, action, player):
         # Updating state
         self.state.step(action, player)
         
         # Retrieving new observations
-        state = self.state.get_visible_state()
+        state = self.state.visible()
         reward = self.get_step_reward(player)
         end = self.state.GAME_ENDED
-        debug = {}
+        debug = {'full_state': self.state}
                 
         self.step += 1
         return(state, reward, end, debug)
@@ -70,7 +68,7 @@ class Environment:
                             if self.state.still_has_token(color_3):
                                 new_action = {
                                     'type': take_3,
-                                    'params': set(color_1, color_2, color_3)
+                                    'params': [color_1, color_2, color_3]
                                 }
                                 actions.append(new_action)
         
@@ -86,7 +84,7 @@ class Environment:
         
         # Third type : reserve
         reserve = game.POSSIBLE_ACTIONS[2]
-        if len(player.reserved_cards) < game.MAX_RESERVED_CARDS:
+        if len(player.hand) < game.MAX_RESERVED_CARDS:
             # Pick a reserved cards from the middle of the table
             for i in range(game.BOARD_X):
                 for j in range(game.BOARD_Y):

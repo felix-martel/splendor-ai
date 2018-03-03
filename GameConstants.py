@@ -1,21 +1,40 @@
+from pickle import load
 TOKEN_TYPES = ['green', 'blue', 'red', 'white', 'black', 'yellow']
 POSSIBLE_ACTIONS = ['take_3', 'take_2', 'reserve', 'purchase']
+PLAYER_NAMES = ['Marco', 'Freddy', 'Satanas', 'Franck', 'Steve', 'Julia', 'Ed', 'Banco', 'Yuri', 'Mae', 'Bae', 'Christiana', 'Emma', 'La Folle', 'Oeil-de-cochon', 'Duende']
 
 # -- RULES CONSTANTS -- #
 # Board dimensions
 BOARD_X, BOARD_Y = (3, 4)
+DECK_SIZE = 3
+NB_PLAYERS = 4
 
 MIN_TOKEN_FOR_TAKE_2 = 4
 MAX_TOKEN_PER_PLAYER = 10
 MAX_RESERVED_CARDS = 3
 
-DECK_SIZE = 3
-
-NB_PLAYERS = 4
 
 PRESTIGE_TARGET = 15
 
 JOKER_COLOR = 'yellow'
+
+# -- DATA & CARDS -- #
+path_to_cards = 'serialized-cards.pkl'
+path_to_tiles = 'serialized-tiles.pkl'
+
+def get_cards():
+    with open(path_to_cards, 'rb') as data:
+        serialized_cards = load(data)
+        return serialized_cards
+    
+def get_tiles():
+    with open(path_to_tiles, 'rb') as data:
+        serialized_tiles = load(data)
+        return serialized_tiles
+
+def get_tokens():
+    tokens = {'green': 7, 'blue': 7, 'red': 7, 'white': 7, 'black': 7, 'yellow': 5}
+    return tokens
 
 # -- UTILITY FUNCTIONS -- #
 VERBOSE = True
@@ -28,3 +47,14 @@ def get_empty_token_bag():
     for col in TOKEN_TYPES:
         d[col] = 0
     return d
+    
+def list_to_dict(l):
+    colors = ['white', 'black', 'blue', 'green', 'red', 'yellow']
+    d = {}
+    for i in len(l):
+        d[colors[i]] = l[i]
+    return(d)
+    
+def tokens_to_str(tokens):
+    return " - ".join([str(n)+" " + color for color, n in tokens.items()])
+

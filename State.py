@@ -1,10 +1,24 @@
 import random
 import numpy as np
 import GameConstants as game
-import PlayerData, Card
+from PlayerData import PlayerData
+from Card import Card
+from Tile import Tile
 
 class State:
     def __init__(self):
+        # Game
+        self.turn = 0
+        self.current_player = 0
+        self.TARGET_REACHED = False
+        self.GAME_ENDED = False
+        # Init to empty values
+        self.cards = []
+        self.tiles = []
+        self.tokens = {}
+        self.deck = []
+        self.players = []
+        # Real initialization here
         self.reset()
         
     def visible(self):
@@ -127,7 +141,7 @@ class State:
             self.turn += 1
             self.current_player = 0            
             game.out("-- Starting turn", self.turn, "-- ")
-        game.out("Player", self.current_player, "now playing")
+        game.out(self.get_current_player().name, "now playing")
     
     def get_card_from_table(self, i, j):
         '''
@@ -169,26 +183,18 @@ class State:
         else:
             return 0
             
-    def _build_token_list(self, nb_players=4):
-        colors = {
-        'green': 7, 
-        'blue': 7, 
-        'red': 7, 
-        'white': 7, 
-        'black': 7, 
-        'yellow': 5}
-        #tokens = np.concatenate([np.full(nb, color) for color, nb in colors.items()])
+    def get_tokens(self):        
+        return game.get_tokens() 
         
-        return colors 
+    def get_cards(self, nb_players=4):
+        cards = [Card(level, price, prestige, bonus) for level, price, prestige, bonus in game.get_cards()]
+        l1 = [c for c in cards if c.level == 0]
+        l2 = [c for c in cards if c.level == 1]
+        l3 = [c for c in cards if c.level == 2]
+        return l1, l2, l3
         
-    def _build_card_list(self, nb_players=4):
-        level_1 = np.full(40, 'level_1')
-        level_2 = np.full(30, 'level_2')
-        level_3 = np.full(20, 'level_3')
-        return level_1, level_2, level_3
-        
-    def _build_tile_list(self, nb_players=4):
-        tiles = np.full(10, 'noble_tile')
+    def get_tiles(self):
+        tiles = [Tile(bonus, prestige) for bonus, prestige in game.get_tiles()]
         return tiles
         
     def player_has_reached_target(self, player):
@@ -198,14 +204,28 @@ class State:
         game.out(player.name, "has reached", player.prestige, "points. The game will end after the current turn is complete")
         self.TARGET_REACHED = True
         
+    def print_deck(self):
+        print("splendor - turn", self.turn, "- now playing : player", self.current_player)
+        print("---------------------------------------------------------------------------")
+        print("".join([str(t) for t in self.tiles]))
+        for i in range(game.BOARD_X):
+            print("\t".join([str(c) for c in self.cards[i]]))
+        print(" - ".join([str(n)+" " + color for color, n in self.tokens.items()]))
+        print("---------------------------------------------------------------------------")
+        
     def _init_deck(self, nb_players=4):
         # Retrieve development cards
-        l1, l2, l3 = self._build_card_list() 
-        l1 = random.shuffle(l1)
-        l2 = random.shuffle(l2)
-        l3 = random.shuffle(l3)
+        l1, l2, l3 = self.get_cards()
+        game.out("-- Initializing the game --")
+        game.out("Nb of level-1 cards :", len(l1))
+        game.out("Nb of level-2 cards :", len(l2))
+        game.out("Nb of level-3 cards :", len(l3))
+        
+        random.shuffle(l1)
+        random.shuffle(l2)
+        random.shuffle(l3)
         # Set up the deck
-        nb_reveal = 4
+        nb_reveal = game.BOARD_Y
         deck_1, column_1 = l1[:-nb_reveal], l1[-nb_reveal:]
         deck_2, column_2 = l2[:-nb_reveal], l2[-nb_reveal:]
         deck_3, column_3 = l3[:-nb_reveal], l3[-nb_reveal:]
@@ -213,11 +233,11 @@ class State:
         visible_cards = [column_1, column_2, column_3]
         
         # Tokens
-        tokens = self._build_token_list()
+        tokens = self.get_tokens()
         
         # Tiles
         nb_tiles = nb_players + 1
-        tiles = self._build_tile_list()
+        tiles = self.get_tiles()
         tiles = random.sample(tiles, nb_tiles)
         
         # Declare attributes
@@ -226,3 +246,5 @@ class State:
         self.tokens = tokens
         self.deck = [deck_1, deck_2, deck_3]
         self.players = [PlayerData(i) for i in range(game.NB_PLAYERS)]
+        
+        self.print_deck()

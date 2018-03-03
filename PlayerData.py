@@ -22,15 +22,24 @@ class PlayerData:
         self.hand = []
         self.nobles = []
         self.prestige = 0
-        self.name = "player_" + i
+        self.name = random.choice(game.PLAYER_NAMES) + " (player_" + str(i) +")"
         self.n_tokens = 0
+        
+    def __str__(self):
+        rep = ["-- Player : " + self.name + " --"]
+        rep.append("Prestige : " + str(self.prestige))
+        rep.append("Tokens : " + game.tokens_to_str(self.tokens))
+        rep.append("Bonus  : " + game.tokens_to_str(self.tokens))
+        
+        return "\n".join(rep)
+        
         
     def can_buy(self, card):
         '''
         Check if the player can buy the card <card>, using discounts and jokers
         '''
         missing_tokens = 0
-        price = self.compute_discounted_price(card.price)
+        price = self.compute_discounted_price(card)
         for color, amount in price.items():
             if self.tokens[color] < amount:
                 missing_tokens = missing_tokens + (self.tokens[color] - amount)
@@ -43,7 +52,7 @@ class PlayerData:
         Take tokens from the table.
         <tokens> should be a list of tuples (<token_color>, <token_quantity>)
         '''
-        message = self.name + " took " + ", ".join([amount + " " + color + " token(s)" for color, amount in tokens])
+        message = self.name + " took " + ", ".join([str(amount) + " " + color + " token(s)" for color, amount in tokens])
         
         for color, amount in tokens:
             state.tokens[color] -= amount
@@ -59,6 +68,7 @@ class PlayerData:
         '''
         assert len(self.hand) < 3, ("Too many cards in hand for " + self.name)
         self.hand.append(card)
+        game.out(self.name, "reserved the following card :", card)
         self.take_tokens(state, [(game.JOKER_COLOR, 1)])
         
         
@@ -70,7 +80,7 @@ class PlayerData:
         
         # First pay for the mine...
         joker_color = game.JOKER_COLOR
-        price = self.compute_discounted_price(card.price)
+        price = self.compute_discounted_price(card)
         for color, amount in price.items():
             if self.tokens[color] >= amount:
                 # Enough tokens to pay directly
@@ -84,15 +94,15 @@ class PlayerData:
 
         # ...then receive bonuses and extra prestige             
         self.prestige += card.prestige
-        for color, amount in card.bonuses.items():
-            self.bonuses[color] += amount
+        self.bonuses[card.bonus] += 1
+        game.out(self.name, "bought the following card :", card)
 
     def compute_discounted_price(self, card):
         '''
         If you hold bonuses, you have a discount on dvpt cards. This function computes and returns such discounted price
         '''
         discounted_price = game.get_empty_token_bag()
-        for color, price in card.price:
+        for color, price in card.price.items():
             discounted_price[color] = positive_part(price - self.bonuses[color])
         return discounted_price
                     
@@ -123,7 +133,7 @@ class PlayerData:
         if n_tokens > game.MAX_TOKEN_PER_PLAYER:
             n_tokens_to_remove = n_tokens - game.MAX_TOKEN_PER_PLAYER
             all_tokens = np.concatenate([np.full(nb, color) for color, nb in self.tokens.items()])
-            all_tokens = random.shuffle(all_tokens)
+            random.shuffle(all_tokens)
             tokens_to_remove = all_tokens[:n_tokens_to_remove]
             for color in tokens_to_remove:
                 self.pay(state, 1, color)
@@ -146,6 +156,7 @@ class PlayerData:
         noble = state.tiles.pop(noble_id)
         self.nobles.append(noble)
         self.prestige += 3
+        game.out(self.name, "has gained a noble", noble, "and now have", self.prestige, "prestige points")
     
     def has_won(self):
         '''

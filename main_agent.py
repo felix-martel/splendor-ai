@@ -1,10 +1,10 @@
-import Environment as Env
+from Environment import Environment
 
 # Constants
 n_games = 10
 max_step = 1000
-
-game = Env()
+last_debug = {}
+game = Environment()
 
 for n_game in range(n_games):
     player = game.reset()
@@ -14,8 +14,9 @@ for n_game in range(n_games):
     game_ended = False
     while not game_ended and t < max_step:
         action = game.get_random_action(player)
+        state, reward, game_ended, _debug = game.take_action(action, player)
+        last_debug = _debug
         t += 1
-        state, reward, game_ended, _debug = game.take_action(action)
         game.autoplay()
 
     print("--- Game #", n_game, "---")

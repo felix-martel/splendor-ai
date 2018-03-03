@@ -9,6 +9,8 @@ class Environment:
     
     def __init__(self):
         self.state = State()
+        self.step = 0
+        self.GAME_ENDED = False
         
         print("New game")
     
@@ -21,7 +23,7 @@ class Environment:
         self.GAME_ENDED = False
         game.out("Environment reset")
         
-        return(self.state.get_player(0))
+        return(self.get_player())
     
     def get_step_reward(self, player):
         return self.state.get_step_reward(player)
@@ -51,6 +53,9 @@ class Environment:
     def get_random_action(self, player):
         action = random.choice(self.get_possible_actions(player))
         return(action)
+        
+    def get_player(self):
+        return self.state.players[0]
         
     def get_possible_actions(self, player):
         actions = []

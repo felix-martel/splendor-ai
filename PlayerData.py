@@ -22,7 +22,7 @@ class PlayerData:
         self.hand = []
         self.nobles = []
         self.prestige = 0
-        self.name = random.choice(game.PLAYER_NAMES) + " (player_" + str(i) +")"
+        self.name = random.choice(game.PLAYER_NAMES)
         self.n_tokens = 0
         
     def __str__(self):
@@ -33,6 +33,8 @@ class PlayerData:
         
         return "\n".join(rep)
         
+    def rename(self, name):
+        self.name = name
         
     def can_buy(self, card):
         '''

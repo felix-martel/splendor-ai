@@ -131,8 +131,13 @@ class State:
         
         self.current_player += 1
         if self.current_player == game.NB_PLAYERS:
-            game.out("End of turn", self.turn)
-            
+            game.out("End of turn", self.turn, "\n")
+            if game.INCREMENTAL:
+                s = input("Continue ?")
+                if s in ["quit", "cancel", "no", "No", "N", "n"]:
+                    return
+                else:
+                    game.out("Continuing...\n\n")
             if self.TARGET_REACHED:
                 self.GAME_ENDED = True
                 game.out("-- END OF THE GAME --")
@@ -212,6 +217,7 @@ class State:
             print("\t".join([str(c) for c in self.cards[i]]))
         print(" - ".join([str(n)+" " + color for color, n in self.tokens.items()]))
         print("---------------------------------------------------------------------------")
+        print("Players :", " - ".join([p.name for p in self.players]))
         
     def _init_deck(self, nb_players=4):
         # Retrieve development cards
@@ -246,5 +252,6 @@ class State:
         self.tokens = tokens
         self.deck = [deck_1, deck_2, deck_3]
         self.players = [PlayerData(i) for i in range(game.NB_PLAYERS)]
+        self.players[0].rename("You")
         
         self.print_deck()

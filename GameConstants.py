@@ -8,6 +8,7 @@ PLAYER_NAMES = ['Marco', 'Freddy', 'Satanas', 'Franck', 'Steve', 'Julia', 'Ed', 
 BOARD_X, BOARD_Y = (3, 4)
 DECK_SIZE = 3
 NB_PLAYERS = 4
+INCREMENTAL = True
 
 MIN_TOKEN_FOR_TAKE_2 = 4
 MAX_TOKEN_PER_PLAYER = 10

@@ -13,6 +13,8 @@ DECK_SIZE = 3
 
 NB_PLAYERS = 4
 
+PRESTIGE_TARGET = 15
+
 JOKER_COLOR = 'yellow'
 
 # -- UTILITY FUNCTIONS -- #
@@ -20,4 +22,9 @@ VERBOSE = True
 def out(*args):
     if VERBOSE:
         print(*args)
-    
+
+def get_empty_token_bag():
+    d = {}
+    for col in TOKEN_TYPES:
+        d[col] = 0
+    return d

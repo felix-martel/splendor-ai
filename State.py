@@ -8,6 +8,9 @@ class State:
         self.reset()
         
     def visible(self):
+        '''
+        Return the visible state, ie the "observation space" from which an agent has to take decisions
+        '''
         return {
             'cards': self.cards,
             'tiles': self.tiles,
@@ -16,9 +19,15 @@ class State:
         }
     
     def still_has_token(self, color):
+        '''
+        Check if there is still at least one token of color <color> on the board
+        '''
         return self.tokens[color] > 0
         
     def reset(self, seed=None):
+        '''
+        Reset the state
+        '''
         random.seed(seed)
         
         self._init_deck()
@@ -26,14 +35,35 @@ class State:
         # State
         self.turn = 0
         self.current_player = 0
+        self.TARGET_REACHED = False
         self.GAME_ENDED = False
         print("State reset")
         
     def get_player(self, player_id):
+        '''
+        Retrieve the player from its id
+        '''
         assert(player_id < game.NB_PLAYERS)
         return self.players[player_id]
         
     def step(self, action, player):
+        '''
+        Main function. Given an action <action> and a player <player>, it updates the state
+        accordingly
+        
+        Input :
+        <action> is a dict with two keys :
+            - type : a string among <game.POSSIBLE_ACTIONS>
+            - params : the parameters of the action. Its format depends on the type.
+                - take_3 : list/iterable of three color names : [<color_1>, <color_2>, <color_3>]
+                - take_2 : string, color name
+                - reserve : origin and coordinate of the card
+                    - ['from_table', (i, j)]
+                    - ['from_deck', i]
+                - purchase : origin and coordinate of the card
+                    - ['from_table', (i, j)]
+                    - ['from_hand', i]
+        '''
         [TAKE_3, TAKE_2, RESERVE, PURCHASE] = game.POSSIBLE_ACTIONS
         action_type = action['type']
         params = action['params']
@@ -70,13 +100,29 @@ class State:
                 player.buy_card(self, card)
         
         # CHECK WHOSE NOBLES ARE VISITING
+        visiting_nobles = []
+        for noble_id in range(len(self.tiles)):
+            noble = self.tiles[noble_id]
+            if noble.can_visit(player):
+                visiting_nobles.append(noble)
+        if len(visiting_nobles) > 0:
+            player.choose_noble(self, visiting_nobles)
         
         # CHECK IF PLAYER HAS THE RIGHT AMOUNT OF TOKENS
+        player.remove_extra_tokens(self)
         
+        # CHECK IF PLAYER HAS WON
+        if player.has_won():
+            self.player_has_reached_target(player)
         
         self.current_player += 1
         if self.current_player == game.NB_PLAYERS:
             game.out("End of turn", self.turn)
+            
+            if self.TARGET_REACHED:
+                self.GAME_ENDED = True
+                game.out("-- END OF THE GAME --")
+                return
             
             self.turn += 1
             self.current_player = 0            
@@ -84,6 +130,9 @@ class State:
         game.out("Player", self.current_player, "now playing")
     
     def get_card_from_table(self, i, j):
+        '''
+        Get a Card object from its coordinates on the table
+        '''
         old_card = self.cards[i][j]
         if len(self.deck[i]) > 0:
             new_card = self.get_card_from_deck(i)
@@ -94,10 +143,31 @@ class State:
         return old_card
 
     def get_current_player(self):
+        '''
+        Get the Player object currently playing
+        '''
         return(self.players[self.current_player])
         
     def get_card_from_deck(self, i):
+        '''
+        Retrieve and remove a Card object from one of the three decks
+        '''
         return self.deck[i].pop()
+        
+    def get_step_reward(self, player):
+        '''
+        Get the reward of a player for the last turn
+        - 100 if the player has reached the prestige target
+        - -10 if another player has reached it before
+        - 0 in any other case
+        '''
+        if player.has_won():
+            return 100
+        elif self.TARGET_REACHED:
+            # Another player has won
+            return -10
+        else:
+            return 0
             
     def _build_token_list(self, nb_players=4):
         colors = {
@@ -120,6 +190,13 @@ class State:
     def _build_tile_list(self, nb_players=4):
         tiles = np.full(10, 'noble_tile')
         return tiles
+        
+    def player_has_reached_target(self, player):
+        '''
+        This function is called when one of the player has reached the prestige target
+        '''
+        game.out(player.name, "has reached", player.prestige, "points. The game will end after the current turn is complete")
+        self.TARGET_REACHED = True
         
     def _init_deck(self, nb_players=4):
         # Retrieve development cards

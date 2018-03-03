@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import math
 import random
 import time
-import Card, Tile, State, PlayerData
+import State
 import GameConstants as game
 
 
@@ -19,37 +19,26 @@ class Environment:
         self.state.reset()
         self.step = 0
         
-        # Rewards
-        self.last_reward = 0
-        self.total_reward = 0
-        
         # State
         self.GAME_ENDED = False
-        print("Environment reset")
+        game.out("Environment reset")
         
         return(self.state.get_player(0))
-
-    def next_step(self):
-        self.step += 1
-        self.total_reward += self.last_reward
-        print("Beginning step", self.step)
     
-    def get_step_reward(self):
-        return self.last_reward
+    def get_step_reward(self, player):
+        return self.state.last_reward(player)
     
     def take_action(self, action, player):
-        if action in self.possible_actions:
-            # Do something
-            self.state.step(action, player)
-            self.next_step()
-            print("Taking action", action)          
-        else:
-            print("Invalid action")
+        # Updating state
+        self.state.step(action, player)
         
+        # Retrieving new observations
         state = self.state.get_visible_state()
-        reward = self.get_step_reward()
-        end = self.GAME_ENDED
+        reward = self.get_step_reward(player)
+        end = self.state.GAME_ENDED
         debug = {}
+                
+        self.step += 1
         return(state, reward, end, debug)
         
     def autoplay(self):

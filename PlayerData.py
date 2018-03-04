@@ -147,7 +147,8 @@ class PlayerData:
         n_tokens = sum([token_quantity for token, token_quantity in self.tokens.items()])
         if n_tokens > game.MAX_TOKEN_PER_PLAYER:
             n_tokens_to_remove = n_tokens - game.MAX_TOKEN_PER_PLAYER
-            all_tokens = np.concatenate([np.full(nb, color) for color, nb in self.tokens.items()])
+            all_tokens = []
+            [all_tokens.extend(nb*[color]) for color, nb in self.tokens.items()]
             random.shuffle(all_tokens)
             tokens_to_remove = all_tokens[:n_tokens_to_remove]
             for color in tokens_to_remove:

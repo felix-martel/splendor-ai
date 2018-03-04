@@ -24,6 +24,7 @@ class PlayerData:
         self.prestige = 0
         self.name = "player_" + str(i)
         self.n_tokens = 0
+        self.position = 0
         
     def __str__(self):
         rep = ["-- Player : " + self.name + " --"]
@@ -39,7 +40,8 @@ class PlayerData:
             'tokens' : self.tokens,
             'hand' : len(self.hand),
             'prestige' : self.prestige,
-            'name' : self.name
+            'name' : self.name,
+            'position' : self.position
         }
 
     def rename(self, name):

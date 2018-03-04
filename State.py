@@ -21,22 +21,25 @@ class State:
         # Real initialization here
         self.reset()
         
-    def visible(self):
+    def visible(self, player=None):
         '''
         Return the visible state, ie the "observation space" from which an agent has to take decisions
         '''
+        if player==None:
+            player = self.get_current_player()
+        position=self.players.index(player)
         return {
             'cards': self.cards,
             'tiles': self.tiles,
             'tokens': self.tokens,
             'deck': [(len(d) > 0) for d in self.deck],
-            'players' : self.other_players_visibility(),
-            'self' : self.get_current_player(),
-            'pos' : self.current_player
+            'players' : self.other_players_visibility(position),
+            'self' : player,
+            'position' : position
         }
 
-    def other_players_visibility(self):
-        return [self.get_player(i).visible() for i in list(range(self.current_player+1,len(self.players)))+list(range(0,self.current_player))]
+    def other_players_visibility(self,position):
+        return [self.get_player(i).visible() for i in list(range(position+1,len(self.players)))+list(range(0,position))]
             
 
     

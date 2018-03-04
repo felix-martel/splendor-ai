@@ -1,5 +1,5 @@
 import GameConstants as game
-from Utils import positive_part
+from Utils import positive_part, subtract_tokens
 import numpy as np
 import random
 
@@ -52,8 +52,10 @@ class PlayerData:
         missing_tokens = 0
         price = self.compute_discounted_price(card)
         for color, amount in price.items():
+            if color == game.JOKER_COLOR:
+                pass
             if self.tokens[color] < amount:
-                missing_tokens = missing_tokens + (self.tokens[color] - amount)
+                missing_tokens += (amount - self.tokens[color])
         jokers = self.tokens['yellow']
         
         return(jokers >= missing_tokens)
@@ -116,6 +118,13 @@ class PlayerData:
         for color, price in card.price.items():
             discounted_price[color] = positive_part(price - self.bonuses[color])
         return discounted_price
+        
+        discounted_price = subtract_tokens(card.price, self.bonuses)
+        for color, price in discounted_price.items():
+            # Forbid negative prices
+            if price < 0:
+                discounted_price[color] = 0
+        return discounted_price
                     
     def pay(self, state, amount, color):
         '''
@@ -154,18 +163,19 @@ class PlayerData:
             for color in tokens_to_remove:
                 self.pay(state, 1, color)
                 
-    def choose_noble(self, state, nobles):
+    def choose_noble(self, state, nobles_id):
         '''
         If several nobles can visit a player at the end of its turn, this functions chooses one randomly. If there is only one, then there's no choice.
         /!\  Here, <nobles> is a list of nobles' id, i.e. their index in <state.tiles>
         '''
-        if len(nobles) == 1:
-            self.get_noble(state, nobles[0])
+        if len(nobles_id) == 1:
+            noble_id =  nobles_id[0]
         else:
-            noble_id = random.choice(nobles)
-            self.get_noble(state, noble_id)
+            game.out(self.name, "can be visited by", len(nobles_id), "nobles")
+            noble_id = random.choice(nobles_id)
+        self.get_noble_from_id(state, noble_id)
             
-    def get_noble(self, state, noble_id):
+    def get_noble_from_id(self, state, noble_id):
         '''
         Take a noble tile from the table and gain prestige
         '''

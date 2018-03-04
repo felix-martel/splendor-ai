@@ -1,6 +1,6 @@
 from pickle import load
 TOKEN_TYPES = ['green', 'blue', 'red', 'white', 'black', 'yellow']
-POSSIBLE_ACTIONS = ['take_3', 'take_2', 'reserve', 'purchase']
+POSSIBLE_ACTIONS = ['take_3', 'take_2', 'reserve', 'purchase', 'do_nothing']
 PLAYER_NAMES = ['Marco', 'Freddy', 'Satanas', 'Franck', 'Steve', 'Julia', 'Ed', 'Banco', 'Yuri', 'Mae', 'Bae', 'Christiana', 'Emma', 'La Folle', 'Oeil-de-cochon', 'Duende']
 
 # -- RULES CONSTANTS -- #
@@ -38,9 +38,10 @@ def get_tokens():
     return tokens
 
 # -- UTILITY FUNCTIONS -- #
-VERBOSE = True
-def out(*args):
-    if VERBOSE:
+VERBOSE = 1
+def out(*args, verbose=1):
+    display = VERBOSE >= verbose
+    if display:
         print(*args)
 
 def get_empty_token_bag():

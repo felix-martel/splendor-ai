@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import random
 from State import State
 import GameConstants as game
+from Utils import get_subsets
 
 
 class Environment: 
@@ -60,22 +61,24 @@ class Environment:
     def get_possible_actions(self, player):
         actions = []
         # First type : take_3
-        take_3 = game.POSSIBLE_ACTIONS[0]        
-        n = len(game.TOKEN_TYPES)
-        for i in range(n):
-            color_1 = game.TOKEN_TYPES[i]
-            if self.state.still_has_token(color_1):
-                for j in range(i, n):
-                    color_2 = game.TOKEN_TYPES[j]
-                    if self.state.still_has_token(color_2):
-                        for k in range(j, n):
-                            color_3 = game.TOKEN_TYPES[k]
-                            if self.state.still_has_token(color_3):
-                                new_action = {
-                                    'type': take_3,
-                                    'params': [color_1, color_2, color_3]
-                                }
-                                actions.append(new_action)
+        take_3 = game.POSSIBLE_ACTIONS[0]
+        # Retrieve list of tokens minus the yellow ones (they cannot be picked)
+        allowed_tokens = game.TOKEN_TYPES.copy()
+        allowed_tokens.remove(game.JOKER_COLOR)
+        available_tokens = set()
+        # Check if there's still available tokens of each color
+        for color in allowed_tokens:
+            if self.state.still_has_token(color):
+                available_tokens.add(color)
+        # Get all 3-tuples of available tokens
+        all_token_tuples = get_subsets(available_tokens, 3)
+        # Add them to the list of possible actions
+        for token_tuple in all_token_tuples:
+            new_action = {
+                'type': take_3,
+                'params': token_tuple
+            }
+            actions.append(new_action)
         
         # Second type : take_2
         take_2 = game.POSSIBLE_ACTIONS[1]

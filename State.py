@@ -81,7 +81,7 @@ class State:
         if self.GAME_ENDED:
             return
         
-        [TAKE_3, TAKE_2, RESERVE, PURCHASE] = game.POSSIBLE_ACTIONS
+        [TAKE_3, TAKE_2, RESERVE, PURCHASE, DO_NOTHING] = game.POSSIBLE_ACTIONS
         action_type = action['type']
         params = action['params']
         
@@ -121,7 +121,7 @@ class State:
         for noble_id in range(len(self.tiles)):
             noble = self.tiles[noble_id]
             if noble.can_visit(player):
-                visiting_nobles.append(noble)
+                visiting_nobles.append(noble_id)
         if len(visiting_nobles) > 0:
             player.choose_noble(self, visiting_nobles)
         
@@ -150,7 +150,7 @@ class State:
             self.turn += 1
             self.current_player = 0            
             game.out("-- Starting turn", (self.turn + 1), "-- ")
-        game.out("Now playing :", self.get_current_player().name)
+        game.out("Now playing :", self.get_current_player().name, verbose=3)
     
     def get_card_from_table(self, i, j):
         '''

@@ -133,6 +133,14 @@ class Environment:
                     'params': ['from_hand', i]
                 }
                 actions.append(new_action)
+                
+        # Else: do nothing
+        do_nothing = game.POSSIBLE_ACTIONS[4]
+        new_action = {
+            'type': do_nothing,
+            'params': None
+            }
+        actions.append(new_action)
            
         
         return(actions)

@@ -29,8 +29,16 @@ class State:
             'cards': self.cards,
             'tiles': self.tiles,
             'tokens': self.tokens,
-            'deck': [(len(d) > 0) for d in self.deck]
+            'deck': [(len(d) > 0) for d in self.deck],
+            'players' : self.other_players_visibility(),
+            'self' : self.get_current_player(),
+            'pos' : self.current_player
         }
+
+    def other_players_visibility(self):
+        return [self.get_player(i).visible() for i in range(self.current_player+1,len(self.players))+range(0,self.current_player)]
+            
+
     
     def still_has_token(self, color):
         '''

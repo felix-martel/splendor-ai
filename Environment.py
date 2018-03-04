@@ -58,6 +58,9 @@ class Environment:
     def get_player(self):
         return self.state.players[0]
         
+    def get_visible_state(self,player):
+        return self.state.visible()
+
     def get_possible_actions(self, player):
         actions = []
         # First type : take_3

@@ -32,7 +32,16 @@ class PlayerData:
         rep.append("Bonus  : " + game.tokens_to_str(self.tokens))
         
         return "\n".join(rep)
-        
+    
+    def visible(self):
+        return {
+            'bonuses' : self.bonuses,
+            'tokens' : self.tokens,
+            'hand' : len(self.hand),
+            'prestige' : len(self.prestige),
+            'name' : self.name
+        }
+
     def rename(self, name):
         self.name = name
         

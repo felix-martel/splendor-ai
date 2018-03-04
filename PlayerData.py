@@ -38,7 +38,7 @@ class PlayerData:
             'bonuses' : self.bonuses,
             'tokens' : self.tokens,
             'hand' : len(self.hand),
-            'prestige' : len(self.prestige),
+            'prestige' : self.prestige,
             'name' : self.name
         }
 

@@ -123,6 +123,8 @@ class State:
                 i = params
                 card = player.pop_card_from_hand(i)
                 player.buy_card(self, card)
+        elif action_type == DO_NOTHING:
+            game.out(self.get_current_player().name,"doesn't do anything this turn")
         
         # CHECK WHOSE NOBLES ARE VISITING
         visiting_nobles = []

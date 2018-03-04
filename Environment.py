@@ -35,7 +35,7 @@ class Environment:
         # Retrieving new observations
         state = self.state.visible()
         reward = self.get_step_reward(player)
-        end = self.state.GAME_ENDED
+        end = self.state.TARGET_REACHED
         debug = {'full_state': self.state}
                 
         self.step += 1

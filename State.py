@@ -78,6 +78,9 @@ class State:
                     - ['from_table', (i, j)]
                     - ['from_hand', i]
         '''
+        if self.GAME_ENDED:
+            return
+        
         [TAKE_3, TAKE_2, RESERVE, PURCHASE] = game.POSSIBLE_ACTIONS
         action_type = action['type']
         params = action['params']
@@ -141,12 +144,13 @@ class State:
             if self.TARGET_REACHED:
                 self.GAME_ENDED = True
                 game.out("-- END OF THE GAME --")
+                game.out(self.get_results())
                 return
             
             self.turn += 1
             self.current_player = 0            
-            game.out("-- Starting turn", self.turn, "-- ")
-        game.out(self.get_current_player().name, "now playing")
+            game.out("-- Starting turn", (self.turn + 1), "-- ")
+        game.out("Now playing :", self.get_current_player().name)
     
     def get_card_from_table(self, i, j):
         '''
@@ -189,7 +193,18 @@ class State:
             return 0
             
     def get_tokens(self):        
-        return game.get_tokens() 
+        return game.get_tokens()
+        
+    def get_results(self):
+        if self.GAME_ENDED:
+            res = ["\n-- Results --\n"]
+            leaderboard = [(p.name, p.prestige) for p in self.players]
+            leaderboard.sort(key=lambda x: -x[1])
+            for i, (name, score) in enumerate(leaderboard):
+                res.append(str(i+1) + " : " + name.ljust(12, " ") + "..........\t" + str(score) + "pts")
+            
+        return "\n".join(res)
+            
         
     def get_cards(self, nb_players=4):
         cards = [Card(level, price, prestige, bonus) for level, price, prestige, bonus in game.get_cards()]
@@ -206,7 +221,9 @@ class State:
         '''
         This function is called when one of the player has reached the prestige target
         '''
+        game.out("\n\nCONGRATS !!!!")
         game.out(player.name, "has reached", player.prestige, "points. The game will end after the current turn is complete")
+        game.out("!!!!!!!!!!!!!\n\n")
         self.TARGET_REACHED = True
         
     def print_deck(self):
@@ -252,6 +269,11 @@ class State:
         self.tokens = tokens
         self.deck = [deck_1, deck_2, deck_3]
         self.players = [PlayerData(i) for i in range(game.NB_PLAYERS)]
-        self.players[0].rename("You")
+        players_names = ["You"] + random.sample(game.PLAYER_NAMES, game.NB_PLAYERS - 1)
+        for i, name in enumerate(players_names):
+            self.players[i].rename(name)
         
         self.print_deck()
+        
+        game.out("-- Starting turn", (self.turn + 1), "-- ")
+        game.out("Now playing :", self.get_current_player().name)

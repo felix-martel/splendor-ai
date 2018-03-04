@@ -18,6 +18,8 @@ while not game_ended and t < max_step:
     t += 1
     game.autoplay()
 
+if game_ended:
+    print("\n\n Game ended after", t, "steps")
 #print("--- GAME RESULTS---")
 #print("Ended after", t, "steps")
 #print("Cumulative reward", game.get_total_reward(player))

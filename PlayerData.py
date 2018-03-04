@@ -22,7 +22,7 @@ class PlayerData:
         self.hand = []
         self.nobles = []
         self.prestige = 0
-        self.name = random.choice(game.PLAYER_NAMES)
+        self.name = "player_" + str(i)
         self.n_tokens = 0
         
     def __str__(self):
@@ -112,6 +112,10 @@ class PlayerData:
         '''
         Pay <amount> of <color> tokens
         '''
+        if self.tokens[color] < amount:
+            game.out("WARNING : the player", self.name, "tried to pay", amount, " ", color, "tokens but had only", self.tokens[color])
+            game.out(self)
+            amount = self.tokens[color]
         self.tokens[color] -= amount
         state.tokens[color] += amount
         

@@ -51,6 +51,9 @@ class PlayerData:
         '''
         Check if the player can buy the card <card>, using discounts and jokers
         '''
+        if card.is_empty():
+            return True
+        
         missing_tokens = 0
         price = self.compute_discounted_price(card)
         for color, amount in price.items():
@@ -61,6 +64,16 @@ class PlayerData:
         jokers = self.tokens['yellow']
         
         return(jokers >= missing_tokens)
+        
+    def duplicate(self):
+        new_player = PlayerData(0)
+        new_player.bonuses = self.bonuses.copy()
+        new_player.tokens = self.tokens.copy()
+        new_player.hand = self.hand.copy()
+        new_player.nobles = self.nobles.copy()
+        new_player.name = self.name + "_copy"
+        new_player.n_tokens = self.n_tokens
+        return new_player
         
     def take_tokens(self, state, tokens):
         '''

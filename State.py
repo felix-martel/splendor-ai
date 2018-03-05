@@ -60,7 +60,7 @@ class State:
         self.current_player = 0
         self.TARGET_REACHED = False
         self.GAME_ENDED = False
-        print("State reset")
+        game.out("State reset")
         
     def get_player(self, player_id):
         '''
@@ -142,6 +142,11 @@ class State:
         # CHECK IF PLAYER HAS WON
         if player.has_won():
             self.player_has_reached_target(player)
+            self.GAME_ENDED = True
+            self.TARGET_REACHED = True
+            game.out("-- END OF THE GAME --")
+            game.out(self.get_results())
+            return
         
         self.current_player += 1
         if self.current_player == game.NB_PLAYERS:
@@ -238,14 +243,14 @@ class State:
         self.TARGET_REACHED = True
         
     def print_deck(self):
-        print("splendor - turn", self.turn, "- now playing : player", self.current_player)
-        print("---------------------------------------------------------------------------")
-        print("".join([str(t) for t in self.tiles]))
+        game.out("splendor - turn", self.turn, "- now playing : player", self.current_player)
+        game.out("---------------------------------------------------------------------------")
+        game.out("".join([str(t) for t in self.tiles]))
         for i in range(game.BOARD_X):
-            print("\t".join([str(c) for c in self.cards[i]]))
-        print(" - ".join([str(n)+" " + color for color, n in self.tokens.items()]))
-        print("---------------------------------------------------------------------------")
-        print("Players :", " - ".join([p.name for p in self.players]))
+            game.out("\t".join([str(c) for c in self.cards[i]]))
+        game.out(" - ".join([str(n)+" " + color for color, n in self.tokens.items()]))
+        game.out("---------------------------------------------------------------------------")
+        game.out("Players :", " - ".join([p.name for p in self.players]))
         
     def _init_deck(self, nb_players=4):
         # Retrieve development cards

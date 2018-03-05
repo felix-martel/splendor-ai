@@ -1,0 +1,169 @@
+coords : (0, 0)
+value  : 1450.0
+freq   : 0.29
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_noble
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 1)
+value  : 20833.0
+freq   : 4.1666
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_prestige
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 2)
+value  : 37812.0
+freq   : 7.5624
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 3)
+value  : 23258.0
+freq   : 4.6516
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> reserve_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 4)
+value  : 61152.0
+freq   : 12.2304
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_3
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 5)
+value  : 18159.0
+freq   : 3.6318
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_2
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (0, 6)
+value  : 22280.0
+freq   : 4.456
+|      few prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> do_nothing
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 0)
+value  : 2089.0
+freq   : 0.4178
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_noble
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 1)
+value  : 20006.0
+freq   : 4.0012
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_prestige
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 2)
+value  : 34354.0
+freq   : 6.8708
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 3)
+value  : 18640.0
+freq   : 3.728
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> reserve_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 4)
+value  : 58949.0
+freq   : 11.7898
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_3
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 5)
+value  : 16499.0
+freq   : 3.2998
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_2
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (1, 6)
+value  : 19251.0
+freq   : 3.8502
+|     some prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> do_nothing
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 0)
+value  : 2298.0
+freq   : 0.4596
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_noble
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 1)
+value  : 23853.0
+freq   : 4.7706
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card_for_prestige
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 2)
+value  : 39667.0
+freq   : 7.9334
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> buy_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 3)
+value  : 24299.0
+freq   : 4.8598
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> reserve_card
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 4)
+value  : 65573.0
+freq   : 13.1146
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_3
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 5)
+value  : 19483.0
+freq   : 3.8966
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> take_2
+|      few buyable_cards     |
+|      few available_tokens  |
+coords : (2, 6)
+value  : 23501.0
+freq   : 4.7002
+|  lots of prestige          |
+|      few remaining_nobles  |
+|      few owned_tokens      | ------> do_nothing
+|      few buyable_cards     |
+|      few available_tokens  |
+total : 21 non-zero cells

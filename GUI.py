@@ -107,6 +107,7 @@ class ConsoleInterpreter:
             - ['from_hand', i]
     '''
     def __init__(self):
+        return
 
     def setup(self,state,player):
         self.possible = state.get_possible_actions(player)
@@ -118,7 +119,7 @@ class ConsoleInterpreter:
         words = command.split(' ')
         actionType = words[0]
         if(actionType in ("take_3","take3","t3")):
-            action = commandT
+            action = command_to_action()
 
 
 

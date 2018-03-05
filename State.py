@@ -40,8 +40,6 @@ class State:
 
     def other_players_visibility(self,position):
         return [self.get_player(i).visible() for i in list(range(position+1,len(self.players)))+list(range(0,position))]
-            
-
     
     def still_has_token(self, color):
         '''

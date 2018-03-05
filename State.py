@@ -6,7 +6,7 @@ from Card import Card
 from Tile import Tile
 
 class State:
-    def __init__(self):
+    def __init__(self,do_reset=True):
         # Game
         self.turn = 0
         self.current_player = 0
@@ -19,8 +19,22 @@ class State:
         self.deck = []
         self.players = []
         # Real initialization here
-        self.reset()
+        if(do_reset):
+            self.reset()
         
+    def __str__(self):
+        rep =[]
+        rep.append("/===== State =====\\")
+        rep.append("[Tokens]")
+        rep.append(str(self.tokens))
+        rep.append("[Cards]")
+        rep.extend((' '.join([str(c) for c in self.cards[k]] + ["("+str(len(self.deck[k]))+" left)"]) for k in (0,1,2)))
+        rep.append("[Players]")
+        rep.extend((str(p) for p in self.players))
+        rep.append("\\=====  End  =====/")
+        
+        return "\n".join(rep)
+
     def visible(self, player=None):
         '''
         Return the visible state, ie the "observation space" from which an agent has to take decisions
@@ -32,7 +46,7 @@ class State:
             'cards': self.cards,
             'tiles': self.tiles,
             'tokens': self.tokens,
-            'deck': [(len(d) > 0) for d in self.deck],
+            'deck': [len(d) for d in self.deck],
             'players' : self.other_players_visibility(position),
             'self' : player,
             'position' : position
@@ -140,7 +154,7 @@ class State:
         player.remove_extra_tokens(self)
         
         # CHECK IF PLAYER HAS WON
-        if player.has_won():
+        if player.has_won(self):
             self.player_has_reached_target(player)
             self.GAME_ENDED = True
             self.TARGET_REACHED = True
@@ -200,7 +214,7 @@ class State:
         - -10 if another player has reached it before
         - 0 in any other case
         '''
-        if player.has_won():
+        if player.has_won(self):
             return 100
         elif self.TARGET_REACHED:
             # Another player has won
@@ -220,8 +234,7 @@ class State:
                 res.append(str(i+1) + " : " + name.ljust(12, " ") + "..........\t" + str(score) + "pts")
             
         return "\n".join(res)
-            
-        
+
     def get_cards(self, nb_players=4):
         cards = [Card(level, price, prestige, bonus) for level, price, prestige, bonus in game.get_cards()]
         l1 = [c for c in cards if c.level == 0]

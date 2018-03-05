@@ -8,12 +8,13 @@ from Utils import get_subsets
 
 class Environment: 
     
-    def __init__(self):
-        self.state = State()
+    def __init__(self,state=None):
+        self.state = state if state!=None else State()
         self.step = 0
+        self.position = 0
         self.GAME_ENDED = False
         
-        print("New game")
+        game.out("New game",verbose=-1)
     
     
     def reset(self):        
@@ -29,6 +30,9 @@ class Environment:
     def get_step_reward(self, player):
         return self.state.get_step_reward(player)
     
+    def game_ended(self):
+        return self.state.GAME_ENDED
+
     def take_action(self, action, player):
         # Updating state
         self.state.step(action, player)
@@ -43,10 +47,11 @@ class Environment:
         reward = self.get_step_reward(player)
                 
         self.step += 1
+        self.position = (self.position + 1)%game.NB_PLAYERS
         return(state, reward, end, debug)
         
     def autoplay(self):
-        for player_id in range(1, game.NB_PLAYERS):
+        for player_id in range(self.position, game.NB_PLAYERS):
             current_player = self.state.get_player(player_id)
             self.take_random_action(current_player)
     

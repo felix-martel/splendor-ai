@@ -4,7 +4,7 @@ import numpy as np
 import random
 
 class PlayerData:
-    def __init__(self, i):
+    def __init__(self, i=""):
         self.bonuses = {
         'green': 0, 
         'blue': 0, 
@@ -30,7 +30,7 @@ class PlayerData:
         rep = ["-- Player : " + self.name + " --"]
         rep.append("Prestige : " + str(self.prestige))
         rep.append("Tokens : " + game.tokens_to_str(self.tokens))
-        rep.append("Bonus  : " + game.tokens_to_str(self.tokens))
+        rep.append("Bonus  : " + game.tokens_to_str(self.bonuses))
         
         return "\n".join(rep)
     
@@ -38,7 +38,7 @@ class PlayerData:
         return {
             'bonuses' : self.bonuses,
             'tokens' : self.tokens,
-            'hand' : len(self.hand),
+            'hand' : [h.level for h in self.hand],
             'prestige' : self.prestige,
             'name' : self.name,
             'position' : self.position
@@ -199,11 +199,11 @@ class PlayerData:
         self.prestige += 3
         game.out(self.name, "has gained a noble", noble, "and now have", self.prestige, "prestige points")
     
-    def has_won(self):
+    def has_won(self,state):
         '''
         Check if prestige is above the prestige target (=15)
         '''
-        return (self.prestige >= game.PRESTIGE_TARGET)
+        return (self.prestige >= game.PRESTIGE_TARGET) and (max([player.prestige for player in state.players]) <= self.prestige)
             
             
     

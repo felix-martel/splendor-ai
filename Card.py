@@ -11,11 +11,16 @@ class Card:
         # Useless
     
     def __str__(self):
+        if(self.empty):
+            return "[empty card]"
         a = [self.bonus]
         b = [self.prestige]
         c = ["".join([str(v) for k, v in self.price.items()])]
         return str(a) + str(b) + str(c)
-        
+    
+    def __eq__(self,other):
+        return ((self.price == other.price) and (self.prestige == other.prestige) and (self.bonus == other.bonus) and (self.level == other.level) or (self.empty == True)) and (self.empty == other.empty)
+
     def is_empty(self):
         return self.empty
 

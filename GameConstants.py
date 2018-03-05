@@ -3,7 +3,7 @@ import numpy as np
 
 TOKEN_TYPES = ['green', 'blue', 'red', 'white', 'black', 'yellow']
 POSSIBLE_ACTIONS = ['take_3', 'take_2', 'reserve', 'purchase', 'do_nothing']
-PLAYER_NAMES = ['Marco', 'Freddy', 'Satanas', 'Franck', 'Steve', 'Julia', 'Ed', 'Banco', 'Yuri', 'Mae', 'Bae', 'Christiana', 'Emma', 'La Folle', 'Oeil-de-cochon', 'Duende']
+PLAYER_NAMES = ['Marco', 'Freddy', 'Satanas', 'Franck', 'Steve', 'Julia', 'Ed', 'Banco', 'Yuri', 'Mae', 'Bae', 'Christiana', 'Emma', 'La Folle', 'Oeil-de-cochon', 'Duende', "André", "Giselle"]
 
 # -- RULES CONSTANTS -- #
 # Board dimensions
@@ -11,7 +11,7 @@ BOARD_X, BOARD_Y = (3, 4)
 DECK_SIZE = 3
 NB_PLAYERS = 4
 INCREMENTAL = False
-VERBOSE = 0
+VERBOSE = 1
 
 MIN_TOKEN_FOR_TAKE_2 = 4
 MAX_TOKEN_PER_PLAYER = 10

@@ -34,10 +34,13 @@ class Environment:
         self.state.step(action, player)
         
         # Retrieving new observations
-        state = self.state.visible()
-        reward = self.get_step_reward(player)
+
         end = self.state.TARGET_REACHED
         debug = {'full_state': self.state}
+        if(self.state.GAME_ENDED):
+            return (None,None,end,debug)
+        state = self.state.visible()
+        reward = self.get_step_reward(player)
                 
         self.step += 1
         return(state, reward, end, debug)
@@ -58,6 +61,9 @@ class Environment:
     def get_player(self):
         return self.state.players[0]
         
+    def get_visible_state(self,player):
+        return self.state.visible(player)
+
     def get_possible_actions(self, player):
         actions = []
         # First type : take_3

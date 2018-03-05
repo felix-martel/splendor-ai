@@ -21,16 +21,27 @@ class State:
         # Real initialization here
         self.reset()
         
-    def visible(self):
+    def visible(self, player=None):
         '''
         Return the visible state, ie the "observation space" from which an agent has to take decisions
         '''
+        if player==None:
+            player = self.get_current_player()
+        position=self.players.index(player)
         return {
             'cards': self.cards,
             'tiles': self.tiles,
             'tokens': self.tokens,
-            'deck': [(len(d) > 0) for d in self.deck]
+            'deck': [(len(d) > 0) for d in self.deck],
+            'players' : self.other_players_visibility(position),
+            'self' : player,
+            'position' : position
         }
+
+    def other_players_visibility(self,position):
+        return [self.get_player(i).visible() for i in list(range(position+1,len(self.players)))+list(range(0,position))]
+            
+
     
     def still_has_token(self, color):
         '''
@@ -115,6 +126,8 @@ class State:
                 i = params
                 card = player.pop_card_from_hand(i)
                 player.buy_card(self, card)
+        elif action_type == DO_NOTHING:
+            game.out(self.get_current_player().name,"doesn't do anything this turn")
         
         # CHECK WHOSE NOBLES ARE VISITING
         visiting_nobles = []
@@ -174,7 +187,7 @@ class State:
         '''
         Get the Player object currently playing
         '''
-        return(self.players[self.current_player])
+        return(self.get_player(self.current_player))
         
     def get_card_from_deck(self, i):
         '''

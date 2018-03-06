@@ -25,6 +25,8 @@ class BasicMonteCarloAgent(Agent):
         self.all_actions = []
         self.actions = []
         self.scores = []
+
+        self.player = None
         
 
     def reconstructBoard(self):
@@ -58,10 +60,10 @@ class BasicMonteCarloAgent(Agent):
         random.shuffle(cards[2])
         watch.loop("shuffle")
 
-        selfplayer = self.state["self"].duplicate()
-        builtstate.players = [selfplayer if i==self.state["position"] else PlayerData(i) for i in range(game.NB_PLAYERS)]
+        self.player = self.state["self"].duplicate()
+        builtstate.players = [self.player if i==self.state["position"] else PlayerData(i) for i in range(game.NB_PLAYERS)]
         k = 0
-        for h in selfplayer.hand:
+        for h in self.player.hand:
             cards[h.level].remove(h)
         for player in builtstate.players:
             p = (k-self.state["position"])%game.NB_PLAYERS
@@ -96,7 +98,7 @@ class BasicMonteCarloAgent(Agent):
         return board
 
     def monte_carlo(self,action):
-        NUMBER_OF_ITERATIONS = 1
+        NUMBER_OF_ITERATIONS = 10
         gv = game.VERBOSE
         game.VERBOSE = -10
         count = 0
@@ -109,6 +111,7 @@ class BasicMonteCarloAgent(Agent):
 
     def single_monte_carlo(self,action):
         board = self.reconstructBoard()
+        board.take_action(action, self.player)
         k=0
         #print(board.state)
         watch.loop()
@@ -124,7 +127,13 @@ class BasicMonteCarloAgent(Agent):
         return board.state.get_player(self.state["position"]).has_won(board.state)
 
     def select_worthwhile_actions(self):
-        self.actions = self.all_actions
+        actions = self.all_actions
+        if(len(actions)>1):
+            actions.remove({
+            'type': game.POSSIBLE_ACTIONS[4],
+            'params': None
+            })
+        self.actions = actions
 
     def find_next_action(self,state,actions):
         watch.start()

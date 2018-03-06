@@ -57,7 +57,7 @@ class AdvancedQAgent(Agent):
         max_Q = np.max(self.Q[next_s, :])
         old_Q = self.Q[s, a]
         new_Q = (1-self.alpha)*self.Q[s, a] + self.alpha * (r + self.gamma * max_Q)
-        self.last_Q_update = new_Q - old_Q
+        #self.last_Q_update = new_Q - old_Q
         self.Q[s, a] = new_Q
         
     def get_last_update(self):
@@ -179,6 +179,9 @@ class AdvancedQAgent(Agent):
         
     def get_Q_coordinates(self):
         return self.get_current_state_id(), self.get_next_action_id()
+        
+    def has_won(self):
+        return self.identity.has_won()
     
     def get_transition_name(self, s, a):
         state = self.state_to_string(s)

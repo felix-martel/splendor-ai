@@ -2,12 +2,12 @@ from Environment import Environment
 from Tile import Tile
 from RandomAgent import RandomAgent
 from RefinedQApproxAgent import RefinedQApproxAgent as AgentQ
+from AdvancedQAgent import AdvancedQAgent as AdvancedAgent
 import numpy as np
 from time import time
 import GameConstants as game
 import pickle
 import math
-import matplotlib.pyplot as plt
 
 def display_time(t):
     if t < 60:
@@ -32,13 +32,20 @@ cumulated_reward = 0
 board = Environment(adversarial=True)
 
 # Init agent
-agent = AgentQ()
+agent = AdvancedAgent()
 lengths = []
 x = []
 updates = []
-#plt.axis([0, epochs, 0, max_step])
-plt.axis([0, epochs, 0, max_step+10])
-plt.ion()
+plot = False
+last_games = []
+total_victories = 0
+recent_victories = 0
+
+if plot:
+    import matplotlib.pyplot as plt
+    
+    plt.axis([0, epochs, 0, max_step+10])
+    plt.ion()
 
 for i in range(epochs):
     board.reset()
@@ -56,6 +63,7 @@ for i in range(epochs):
     game_ended = False
     assertion_errors = 0
     update = 0
+    
     while not game_ended and t < max_step:
         # -- Beginning of our turn --
         # Observe current state
@@ -68,7 +76,7 @@ for i in range(epochs):
         state, reward, game_ended, _debug = board.take_action(action, agent.identity)
         # -- End of our turn --
         
-        update += agent.get_last_update()
+        update += abs(agent.get_last_update())
         cumulated_reward += reward
         last_debug = _debug
         t += 1
@@ -78,8 +86,15 @@ for i in range(epochs):
         reward = -10
     agent.observe(state, reward, game_ended, actions)
     
-    if game_ended:        
+    if agent.has_won():
+       recent_victories += 1
+       total_victories += 1
+
+    if game_ended:
         if i % 10 == 0 and i > 0:
+            last_games.append(recent_victories)
+            recent_victories = 0
+        if i % 100 == 0 and i > 0:
             print("game", i, "out of", epochs)
         if i % 1000 == 0 and i > 0:
             print(i, "games played,", (epochs-i), "to go. Elapsed time :", display_time(time() - t_start), "ETA :", display_time((epochs - i) * (time()-t_start) / i))
@@ -87,14 +102,16 @@ for i in range(epochs):
     lengths.append(t)
     updates.append(update)
     x.append(i)
-    plt.scatter(x, lengths)
-    plt.scatter(x, updates, color='r')
-    plt.pause(0.001)
+    if plot:
+        plt.scatter(x, lengths)
+        plt.scatter(x, updates, color='r')
+        plt.pause(0.001)
 
 t_end = time()
 duration = t_end - t_start
 print(epochs, "iterations finished after", display_time(duration), "\n -")
 print("cumulated reward :", cumulated_reward)
+print("victories :", total_victories, "/", epochs)
 
 def save_training(Q, filename):
     with open(filename, 'wb') as f:

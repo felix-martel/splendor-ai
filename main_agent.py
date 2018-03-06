@@ -3,6 +3,7 @@ from Tile import Tile
 from RandomAgent import RandomAgent
 from QApproxAgent import QApproxAgent as AgentQ
 from BasicMonteCarloAgent import BasicMonteCarloAgent as AgentMC
+from Watch import Watch
 
 # Constants
 n_games = 10
@@ -30,8 +31,7 @@ while not board.game_ended() and t < max_step:
     # Observe current state
     state = board.state.visible()
     actions = board.get_possible_actions(agent.identity)
-
-    print(board.GAME_ENDED,board.game_ended())    
+   
     agent.observe(state, reward, False, actions)
     # Take action
     action = agent.act()    
@@ -45,6 +45,7 @@ while not board.game_ended() and t < max_step:
 
 if board.game_ended():
     print("\n\n Game ended after", t, "steps")
+    print(Watch.globalWatch)
     
 #print("--- GAME RESULTS---")
 #print("Ended after", t, "steps")

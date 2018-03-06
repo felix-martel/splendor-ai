@@ -4,7 +4,7 @@ import random
 from State import State
 import GameConstants as game
 from Utils import get_subsets
-
+from Watch import Watch
 
 class Environment: 
     
@@ -34,6 +34,7 @@ class Environment:
         return self.state.GAME_ENDED
 
     def take_action(self, action, player):
+        Watch.globalWatch.start()
         # Updating state
         self.state.step(action, player)
         
@@ -48,19 +49,27 @@ class Environment:
                 
         self.step += 1
         self.position = (self.position + 1)%game.NB_PLAYERS
+        Watch.globalWatch.loop("take_action")
         return(state, reward, end, debug)
         
     def autoplay(self):
         for player_id in range(self.position, game.NB_PLAYERS):
+            Watch.globalWatch.loop()
             current_player = self.state.get_player(player_id)
+            Watch.globalWatch.loop("get_player")
             self.take_random_action(current_player)
+            Watch.globalWatch.loop("end_auto")
     
     def take_random_action(self, player):
         action = self.get_random_action(player)
         self.take_action(action, player)
         
     def get_random_action(self, player):
-        action = random.choice(self.get_possible_actions(player))
+        Watch.globalWatch.loop("auto_around")
+        possible_actions = self.get_possible_actions(player)
+        Watch.globalWatch.loop("auto_possible_actions")
+        action = random.choice(possible_actions)
+        Watch.globalWatch.loop("auto_chose")
         return(action)
         
     def get_player(self):

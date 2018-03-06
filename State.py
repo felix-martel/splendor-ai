@@ -23,7 +23,7 @@ class State:
             self.reset()
         
     def __str__(self):
-        rep =[]
+        rep = []
         rep.append("/===== State =====\\")
         rep.append("[Tokens]")
         rep.append(str(self.tokens))

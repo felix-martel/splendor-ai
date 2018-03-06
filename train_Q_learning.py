@@ -1,31 +1,46 @@
 from Environment import Environment
 from Tile import Tile
 from RandomAgent import RandomAgent
-from QApproxAgent import QApproxAgent as AgentQ
+from RefinedQApproxAgent import RefinedQApproxAgent as AgentQ
 import numpy as np
 from time import time
+import GameConstants as game
+import pickle
+import math
+import matplotlib.pyplot as plt
+
+def display_time(t):
+    if t < 60:
+        t = math.floor(t*100) / 100
+        return str(t) + "s"
+    elif t < 3600:
+        m = int(math.floor(t)) // 60
+        s = math.floor(t - 60 * m)
+        return str(m) + "mn, " + str(s) + "s"
+    else:
+        h = int(math.floor(t)) // 3600
+        m = t - h * 3600
+        return str(h) + "h, " + display_time(m)
 
 t_start = time()
 # Constants
-n_games = 5000
-max_step = 1000
+epochs = 5000
+max_step = 50
 last_debug = {}
-
+cumulated_reward = 0
 # Init game environment
-board = Environment()
+board = Environment(adversarial=True)
 
 # Init agent
 agent = AgentQ()
-# Init empirical R matrix
-train_occurences = np.zeros_like(agent.R)
-train_rewards = np.zeros_like(agent.R)
+lengths = []
+x = []
+updates = []
+#plt.axis([0, epochs, 0, max_step])
+plt.axis([0, epochs, 0, max_step+10])
+plt.ion()
 
-n_victories = 0
-min_length = 1000
-max_length = 0
-cumulated_length = 0
-
-for i in range(n_games):
+for i in range(epochs):
     board.reset()
     
     # Start new game
@@ -34,91 +49,63 @@ for i in range(n_games):
     initial_actions = board.get_possible_actions(player)
     
     agent.new_game(player, initial_state, initial_actions)
+    
     # Start playing !
     t = 0
     reward = 0
     game_ended = False
+    assertion_errors = 0
+    update = 0
     while not game_ended and t < max_step:
         # -- Beginning of our turn --
         # Observe current state
-        state = board.state.visible()
-        actions = board.get_possible_actions(agent.identity)    
+        state = board.get_visible_state(agent.identity)
+        actions = board.get_possible_actions(agent.identity)
+        
         agent.observe(state, reward, game_ended, actions)
         action = agent.act()
-        
-        # Classify state, action
-        s = agent.classify_state(state)
-        a = agent.classify_action(action)
         
         state, reward, game_ended, _debug = board.take_action(action, agent.identity)
         # -- End of our turn --
         
-        # Update matrices
-        train_occurences[s, a] += 1
-        if reward > 0:
-            train_rewards[s, a] += 1
-            n_victories += 1
-        
+        update += agent.get_last_update()
+        cumulated_reward += reward
         last_debug = _debug
         t += 1
         # Other players' turn
         board.autoplay()
+    if t == max_step and reward <= 0:
+        reward = -10
+    agent.observe(state, reward, game_ended, actions)
     
-    if game_ended:
-        #print("\n\n Game ended after", t, "steps")
-        min_length = min(min_length, t)
-        max_length = max(max_length, t)
-        cumulated_length += t
+    if game_ended:        
         if i % 10 == 0 and i > 0:
-            print("game", i, "out of", n_games)
+            print("game", i, "out of", epochs)
         if i % 1000 == 0 and i > 0:
-            print(i, "games played,", (n_games-i), "to go. Elapsed time :", (time() - t_start), "seconds. ETA :" (n_games - i) * (time()-t_start) / i)
+            print(i, "games played,", (epochs-i), "to go. Elapsed time :", display_time(time() - t_start), "ETA :", display_time((epochs - i) * (time()-t_start) / i))
     
-#print("--- GAME RESULTS---")
-#print("Ended after", t, "steps")
-#print("Cumulative reward", game.get_total_reward(player))
-#game.display_results()
+    lengths.append(t)
+    updates.append(update)
+    x.append(i)
+    plt.scatter(x, lengths)
+    plt.scatter(x, updates, color='r')
+    plt.pause(0.001)
 
 t_end = time()
 duration = t_end - t_start
-print(n_games, "iterations finished after", duration, "seconds.\n -")
-print("Avg length of a game :", cumulated_length / n_games)
-print("Shortest game :", min_length)
-print("Longest game :", max_length)
-print("Nb of victories :", n_victories)
+print(epochs, "iterations finished after", display_time(duration), "\n -")
+print("cumulated reward :", cumulated_reward)
 
-def get_argmax(a):
-    return np.unravel_index(np.argmax(a), a.shape)
-    
-def compute_empirical_R(n_iter, train_occurences, train_rewards, threshold=0.01):
-    assert train_occurences.shape == train_rewards.shape, "array shapes don't match"
-    R = np.zeros_like(train_occurences)
-    M, N = train_occurences.shape
-    max_reward = np.max(train_rewards)
-    
-    for i in range(M):
-        for j in range(N):
-            if train_occurences[i, j] / n_iter <= threshold:
-                R[i, j] = -1
-            R[i, j] += 100 * ( (train_rewards[i, j] / max_reward)**2)
-    
-    print("min value :", np.min(R))
-    print("max value :", np.max(R))
-    return R
-    
-def print_nonzeros(mat, n_iter=n_games):
-    M, N = mat.shape
-    for i in range(M):
-        for j in range(N):
-            if mat[i, j] > 0:
-                print("coords :", (i, j))
-                print("value  :", mat[i,j])
-                print("freq   :", mat[i, j]/n_iter)
-                print(agent.get_transition_name(i, j))
-    print("total :", np.count_nonzero(mat), "non-zero cells")
-    return
-            
- 
-    
-    
+def save_training(Q, filename):
+    with open(filename, 'wb') as f:
+        pickle.dump(Q, f)
 
+def pause_training(filename):
+    data = (agent, board, reward, t, game_ended, epochs)
+    with open(filename, 'wb') as f:
+        pickle.dump(data, f)
+        
+
+        
+
+#save_training(agent.Q, 'q_30k.pkl')

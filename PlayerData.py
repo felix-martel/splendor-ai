@@ -52,7 +52,7 @@ class PlayerData:
         Check if the player can buy the card <card>, using discounts and jokers
         '''
         if card.is_empty():
-            return True
+            return False
         
         missing_tokens = 0
         price = self.compute_discounted_price(card)

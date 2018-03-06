@@ -12,6 +12,7 @@ DECK_SIZE = 3
 NB_PLAYERS = 4
 INCREMENTAL = False
 VERBOSE = 0
+WARNINGS = True
 
 MIN_TOKEN_FOR_TAKE_2 = 4
 MAX_TOKEN_PER_PLAYER = 10
@@ -44,6 +45,10 @@ def get_tokens():
 def out(*args, verbose=1):
     display = VERBOSE >= verbose
     if display:
+        print(*args)
+
+def warning(*args):
+    if WARNINGS:
         print(*args)
 
 def get_empty_token_bag():

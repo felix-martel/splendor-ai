@@ -6,7 +6,7 @@ from Card import Card
 from Tile import Tile
 
 class State:
-    def __init__(self):
+    def __init__(self, adversarial=True):
         # Game
         self.turn = 0
         self.current_player = 0
@@ -19,7 +19,9 @@ class State:
         self.deck = []
         self.players = []
         # Real initialization here
+        self.adversarial = adversarial
         self.reset()
+        self.winner = "(none)"
         
     def visible(self, player=None):
         '''
@@ -62,6 +64,7 @@ class State:
         self.current_player = 0
         self.TARGET_REACHED = False
         self.GAME_ENDED = False
+        self.winner = "(none)"
         game.out("State reset")
         
     def get_player(self, player_id):
@@ -143,12 +146,13 @@ class State:
         
         # CHECK IF PLAYER HAS WON
         if player.has_won():
-            self.player_has_reached_target(player)
-            self.GAME_ENDED = True
-            self.TARGET_REACHED = True
-            game.out("-- END OF THE GAME --")
-            game.out(self.get_results())
-            return
+            if self.adversarial or self.current_player == 0:
+                self.player_has_reached_target(player)
+                self.GAME_ENDED = True
+                self.TARGET_REACHED = True
+                game.out("-- END OF THE GAME --")
+                game.out(self.get_results())
+                return
         
         self.current_player += 1
         if self.current_player == game.NB_PLAYERS:
@@ -204,8 +208,7 @@ class State:
         '''
         if player.has_won():
             return 100
-        elif self.TARGET_REACHED:
-            # Another player has won
+        elif self.GAME_ENDED:
             return -10
         else:
             return 0
@@ -218,6 +221,7 @@ class State:
             res = ["\n-- Results --\n"]
             leaderboard = [(p.name, p.prestige) for p in self.players]
             leaderboard.sort(key=lambda x: -x[1])
+            self.winner = leaderboard[0][0]
             for i, (name, score) in enumerate(leaderboard):
                 res.append(str(i+1) + " : " + name.ljust(12, " ") + "..........\t" + str(score) + "pts")
             

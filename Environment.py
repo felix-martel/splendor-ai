@@ -8,8 +8,8 @@ from Utils import get_subsets
 
 class Environment: 
     
-    def __init__(self):
-        self.state = State()
+    def __init__(self, adversarial=True):
+        self.state = State(adversarial=adversarial)
         self.step = 0
         self.GAME_ENDED = False
         
@@ -37,9 +37,7 @@ class Environment:
 
         end = self.state.TARGET_REACHED
         debug = {'full_state': self.state}
-        if(self.state.GAME_ENDED):
-            return (None,None,end,debug)
-        state = self.state.visible()
+        state = self.state.visible(player)
         reward = self.get_step_reward(player)
                 
         self.step += 1
@@ -63,6 +61,9 @@ class Environment:
         
     def get_visible_state(self,player):
         return self.state.visible(player)
+        
+    def winner(self):
+        return self.state.winner
 
     def get_possible_actions(self, player):
         actions = []
@@ -88,7 +89,7 @@ class Environment:
         
         # Second type : take_2
         take_2 = game.POSSIBLE_ACTIONS[1]
-        for color in game.TOKEN_TYPES:
+        for color in allowed_tokens:
             if self.state.tokens[color] >= game.MIN_TOKEN_FOR_TAKE_2:
                 new_action = {
                     'type': take_2,

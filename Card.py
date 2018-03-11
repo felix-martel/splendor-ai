@@ -3,7 +3,10 @@ import GameConstants as game
 class Card:
     
     def __init__(self, level=None, price=None, prestige=None, bonus=None, empty=False):
-        self.price = price
+        if price != None:
+            self.price = price.copy()
+        else:
+            self.price = price
         self.prestige = prestige
         self.bonus = bonus
         self.level = level
@@ -23,6 +26,30 @@ class Card:
 
     def is_empty(self):
         return self.empty
+        
+    def grant_prestige(self, player, nobles):
+        if self.is_empty():
+            return False
+        
+        if self.prestige > 0:
+            return True
+        else:
+            return sum([self.unlock_noble(player, noble) for noble in nobles]) > 0
+        
+    def unlock_noble(self, player, noble):
+        if self.is_empty():
+            return False
+        
+        unlock = True
+        for color in game.TOKEN_TYPES:
+            current = player.bonuses[color]
+            if self.bonus == color:
+                current += 1
+            expected = noble.bonuses[color]
+            if expected > current:
+                unlock = False
+                break
+        return unlock
 
 def list_to_dict(l):
     colors = ['white', 'black', 'blue', 'green', 'red']

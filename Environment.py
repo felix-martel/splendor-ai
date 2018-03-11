@@ -8,8 +8,8 @@ from Watch import Watch
 
 class Environment: 
     
-    def __init__(self,state=None):
-        self.state = state if state!=None else State()
+    def __init__(self, adversarial=True, state=None):
+        self.state = state if state!=None else State(adversarial=adversarial)
         self.step = 0
         self.position = 0
         self.GAME_ENDED = False
@@ -42,9 +42,7 @@ class Environment:
 
         end = self.state.TARGET_REACHED
         debug = {'full_state': self.state}
-        if(self.state.GAME_ENDED):
-            return (None,None,end,debug)
-        state = self.state.visible()
+        state = self.state.visible(player)
         reward = self.get_step_reward(player)
                 
         self.step += 1
@@ -54,7 +52,7 @@ class Environment:
         
     def autoplay(self):
         for player_id in range(self.position, game.NB_PLAYERS):
-            Watch.globalWatch.loop()
+            #Watch.globalWatch.loop()
             current_player = self.state.get_player(player_id)
             Watch.globalWatch.loop("get_player")
             self.take_random_action(current_player)
@@ -72,11 +70,27 @@ class Environment:
         Watch.globalWatch.loop("auto_chose")
         return(action)
         
-    def get_player(self):
-        return self.state.players[0]
+    def get_player(self, player_id = 0):
+        return self.state.get_player(player_id)
         
     def get_visible_state(self,player):
         return self.state.visible(player)
+        
+    def winner(self, how='name'):
+        if how == 'name':
+            return self.state.winner_name
+        elif how == 'pos':
+            return self.state.winner_id
+        else:
+            return self.state.winner
+        
+    def get_best_adversary_score(self):
+        leaderboard = [(p.position, p.prestige) for p in self.state.players]
+        leaderboard.sort(key=lambda x: -x[1])
+        if leaderboard[0][0] == 0:
+            return leaderboard[1][1]
+        else:
+            return leaderboard[0][1]
 
     def get_possible_actions(self, player):
         actions = []
@@ -102,7 +116,7 @@ class Environment:
         
         # Second type : take_2
         take_2 = game.POSSIBLE_ACTIONS[1]
-        for color in game.TOKEN_TYPES:
+        for color in allowed_tokens:
             if self.state.tokens[color] >= game.MIN_TOKEN_FOR_TAKE_2:
                 new_action = {
                     'type': take_2,
@@ -155,12 +169,13 @@ class Environment:
                 actions.append(new_action)
                 
         # Else: do nothing
-        do_nothing = game.POSSIBLE_ACTIONS[4]
-        new_action = {
-            'type': do_nothing,
-            'params': None
-            }
-        actions.append(new_action)
+        if len(actions) == 0:
+            do_nothing = game.POSSIBLE_ACTIONS[4]
+            new_action = {
+                'type': do_nothing,
+                'params': None
+                }
+            actions.append(new_action)
            
         
         return(actions)

@@ -6,7 +6,8 @@ from Card import Card
 from Tile import Tile
 
 class State:
-    def __init__(self,do_reset=True):
+
+    def __init__(self, adversarial=True, do_reset=True):
         # Game
         self.turn = 0
         self.current_player = 0
@@ -19,8 +20,13 @@ class State:
         self.deck = []
         self.players = []
         # Real initialization here
+
+        self.adversarial = adversarial
         if(do_reset):
             self.reset()
+        self.winner_name = "(none)"
+        self.winner = None
+        self.winner_id = -1
         
     def __str__(self):
         rep = []
@@ -74,6 +80,7 @@ class State:
         self.current_player = 0
         self.TARGET_REACHED = False
         self.GAME_ENDED = False
+        self.winner = "(none)"
         game.out("State reset")
         
     def get_player(self, player_id):
@@ -155,12 +162,13 @@ class State:
         
         # CHECK IF PLAYER HAS WON
         if player.has_won(self):
-            self.player_has_reached_target(player)
-            self.GAME_ENDED = True
-            self.TARGET_REACHED = True
-            game.out("-- END OF THE GAME --")
-            game.out(self.get_results())
-            return
+            if self.adversarial or self.current_player == 0:
+                self.player_has_reached_target(player)
+                self.GAME_ENDED = True
+                self.TARGET_REACHED = True
+                game.out("-- END OF THE GAME --")
+                game.out(self.get_results())
+                return
         
         self.current_player += 1
         if self.current_player == game.NB_PLAYERS:
@@ -216,9 +224,8 @@ class State:
         '''
         if player.has_won(self):
             return 100
-        elif self.TARGET_REACHED:
-            # Another player has won
-            return -10
+        elif self.GAME_ENDED:
+            return 0
         else:
             return 0
             
@@ -228,9 +235,12 @@ class State:
     def get_results(self):
         if self.GAME_ENDED:
             res = ["\n-- Results --\n"]
-            leaderboard = [(p.name, p.prestige) for p in self.players]
+            leaderboard = [(p.name, p.prestige, p_id) for p_id, p in enumerate(self.players)]
             leaderboard.sort(key=lambda x: -x[1])
-            for i, (name, score) in enumerate(leaderboard):
+            self.winner_name = leaderboard[0][0]
+            self.winner_id = leaderboard[0][2]
+            self.winner = self.get_player(self.winner_id)
+            for i, (name, score, pid) in enumerate(leaderboard):
                 res.append(str(i+1) + " : " + name.ljust(12, " ") + "..........\t" + str(score) + "pts")
             
         return "\n".join(res)

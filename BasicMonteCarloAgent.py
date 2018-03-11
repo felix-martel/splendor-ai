@@ -31,7 +31,7 @@ class BasicMonteCarloAgent(Agent):
 
     def reconstructBoard(self):
         watch.loop()
-        builtstate = State(False)
+        builtstate = State(True,False)
         watch.loop("empty_state")
         cards = list(builtstate.get_cards())
         
@@ -90,7 +90,7 @@ class BasicMonteCarloAgent(Agent):
         builtstate.TARGET_REACHED = False
         builtstate.GAME_ENDED = False
 
-        board = Environment(builtstate)
+        board = Environment(True,builtstate)
         board.step = 0
         board.position = self.state["position"]
 
@@ -128,11 +128,6 @@ class BasicMonteCarloAgent(Agent):
 
     def select_worthwhile_actions(self):
         actions = self.all_actions
-        if(len(actions)>1):
-            actions.remove({
-            'type': game.POSSIBLE_ACTIONS[4],
-            'params': None
-            })
         self.actions = actions
 
     def find_next_action(self,state,actions):

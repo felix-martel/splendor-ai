@@ -45,6 +45,7 @@ while not board.game_ended() and t < max_step:
 
 if board.game_ended():
     print("\n\n Game ended after", t, "steps")
+    print(board.state.get_results())
     print(Watch.globalWatch)
     
 #print("--- GAME RESULTS---")

@@ -2,6 +2,9 @@ import GameConstants as game
 from Agent import Agent
 import random
 
+minimal_action_set = [{'type': 'do_nothing', 'params': None}]
+
+
 class RandomAgent(Agent):
     def __init__(self):
         self.identity = None
@@ -28,8 +31,9 @@ class RandomAgent(Agent):
         action = self.next_action
         return action
         
-    def new_game(self, player):
+    def new_game(self, player, state={}, actions=minimal_action_set):
         self.identity = player
         self.nb_games += 1
+        self.next_action = random.choice(actions)
         
     

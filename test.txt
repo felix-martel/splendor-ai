@@ -1,0 +1,1024 @@
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |  6.305468607038484  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |  4.363818571122766  |           1.0  |  2.3554370000000002  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  24.8903098762052  |           1.0  |  3.358143283399267  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  17.57720126795141  |  16.872340100948577  |           1.0  |           1.0  |        0.1801
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |     1.1355437  |  6.026684863361758  |  69.5881815248574  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |  21.256003078184268  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  0.254853835788455  |  3.54853835788455  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  63.562454991216406  |  2.595700351363851  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |  3.5030458959448776  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  46.448252972928586  |  7.17946722489805  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  104.12406357664759  |           1.0  |           1.1  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |  50.636322262777625  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |  10.876583306800818  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |  46.35129634638723  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |  2.260271786265635  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |  19.01412253586409  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |  81.51140679225233  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |  1.9000000000000004  |           1.0  |  21.73078640167001  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |  42.41433423400713  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |  156.3398054523995  |           1.0  |           1.0  |           0.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |  23.020602802298555  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |  36.651615693170186  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |  187.23901662845427  |           1.0  |  15.65289330680082  |           1.0  |  11.118000000000002  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |  118.56936082213063  |           1.0  |  10.756936082213064  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : FALSE            |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |  1.4065719991431762
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |  13.393735739073936  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |  4.732570686331488  |  1.8346928068556325  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |  11.015361092149075  |           1.0  |  1.1548781992623993  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |  1.6878017972150974  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |  9.12544808374064  |  26.13806769088725  |  11.3244496302903  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |  14.39750540025151  |  2.6893466506682713  |  15.0535117549511  |  17.608860795676204  |  17.465747918877156  |  0.14500000000000002
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  15.80527871423491  |           1.0  |           1.0  |  1.2730411063215572  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  19.90449855009846  |           1.0  |  27.014857215705867  |  1.5812201337002054  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  1.1349653419737198  |           1.0  |  1.5134900600630328  |  11.537453971901362  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  2.002256871515196  |  25.351480506412027  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |  1.7464262492064444  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  23.199028145623313  |  26.14065101624395  |  28.920014024643045  |  8.625900745463584  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |  14.654018826604837  |  13.291769579517073  |  20.530350716894553  |  18.60834468655937  |  0.6746498004881963
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  28.141113599161688  |  12.12337571935732  |           1.0  |           1.0  |  1.915895617769083  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |  3.298812445906983  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  33.13262759666108  |  24.923633274011795  |           1.0  |  25.772562143590193  |  4.432202208580376  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |  11.53198180851278  |  2.086959749705768  |           1.0  |     1.1025559  |  17.00759635886691  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  29.874700928432222  |  3.0981019066118654  |  19.989933172583235  |           1.0  |           1.0  |  0.22831777334976439
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : FALSE           |  38.976962618720215  |  19.90619768096921  |  27.48051047756737  |  27.718223347161157  |  2.8301008756068096  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : FALSE           |  3.3471989584839683  |  3.4708510686531993  |  1.1266048783990001  |  1.230692375758492  |  21.47762066909864  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : FALSE        |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : FALSE            |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : FALSE             |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : FALSE              |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : FALSE              |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+
+can_reserve : TRUE              |  buy_prestige  |  buy_card      |  reserve       |  take_3        |  take_2        |  do_nothing  
+can_buy_card : TRUE             |                |                |                |                |                |              
+can_take_3 : TRUE               |                |                |                |                |                |              
+high_prestige : TRUE            |           1.0  |           1.0  |           1.0  |           1.0  |           1.0  |          0.05
+can_buy_prestige : TRUE         |                |                |                |                |                |              
+can_take_2 : TRUE               |                |                |                |                |                |              
+low_prestige : TRUE             |                |                |                |                |                |              
+

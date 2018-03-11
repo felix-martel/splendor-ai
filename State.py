@@ -21,7 +21,9 @@ class State:
         # Real initialization here
         self.adversarial = adversarial
         self.reset()
-        self.winner = "(none)"
+        self.winner_name = "(none)"
+        self.winner = None
+        self.winner_id = -1
         
     def visible(self, player=None):
         '''
@@ -209,7 +211,7 @@ class State:
         if player.has_won():
             return 100
         elif self.GAME_ENDED:
-            return -10
+            return 0
         else:
             return 0
             
@@ -219,10 +221,12 @@ class State:
     def get_results(self):
         if self.GAME_ENDED:
             res = ["\n-- Results --\n"]
-            leaderboard = [(p.name, p.prestige) for p in self.players]
+            leaderboard = [(p.name, p.prestige, p_id) for p_id, p in enumerate(self.players)]
             leaderboard.sort(key=lambda x: -x[1])
-            self.winner = leaderboard[0][0]
-            for i, (name, score) in enumerate(leaderboard):
+            self.winner_name = leaderboard[0][0]
+            self.winner_id = leaderboard[0][2]
+            self.winner = self.get_player(self.winner_id)
+            for i, (name, score, pid) in enumerate(leaderboard):
                 res.append(str(i+1) + " : " + name.ljust(12, " ") + "..........\t" + str(score) + "pts")
             
         return "\n".join(res)

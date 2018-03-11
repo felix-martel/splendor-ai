@@ -4,14 +4,13 @@ import random
 import numpy as np
 import Utils
 
-class AdvancedQAgent(Agent):
-    def __init__(self):
+from sklearn import linear_model, neural_network
+
+class HeuristicAgent(Agent):
+    def __init__(self, train=True, train_set=[], clf='ridge'):
         self.identity = None
         self.nb_victories = 0
         self.nb_games = 0
-        self.current_state_id = -1
-        self.previous_state_id = -1
-        self.last_action_id = -1
         self.next_action = {}
         self.gamma = 1
         self.initial_alpha = 0.05
@@ -29,10 +28,16 @@ class AdvancedQAgent(Agent):
             'can_take_3'
             
         ]
+        self.training_phase = train
+        self.is_trained = not train
+        self.classifier = {
+            'ridge': linear_model.RidgeCV(),
+            'mlp': neural_network.MLPRegressor()        
+        }[clf]
         self.state_space_y = [0, 1] # 0: few, 1: some, 2: a lot
         self.state_space, self.state_space_inverted_index = self.build_state_space()
 #        self.state_space_inverted_index = self.build_inverted_index(self.state_space)
-        
+                
         self.action_space = [
             'buy_prestige',
             'buy_card',
@@ -45,29 +50,12 @@ class AdvancedQAgent(Agent):
         self.nb_actions = len(self.action_space)
         self.nb_states = len(self.state_space)
         
-        self.last_Q_update = 0
-        self.Q = np.ones((self.nb_states, self.nb_actions))
-        self.Q[:,5] = 0.05
-        self.R = np.ones((self.nb_states, self.nb_actions))
-        
         self.state = {}
-        self.actions = []
+        self.actions = []  
         
-    def update_Q(self, s, a, r, next_s):
-        '''
-        Update Q depending on reward <r>
-        Q(s, a) <- (1-alpha) * Q(s, a) + alpha * (r + gamma * max_a' Q(s', a'))
-        '''
-        max_Q = np.max(self.Q[next_s, :])
-        old_Q = self.Q[s, a]
-        new_Q = (1-self.alpha)*self.Q[s, a] + self.alpha * (r + self.gamma * max_Q)
-        #self.last_Q_update = new_Q - old_Q
-        self.Q[s, a] = new_Q
-        self.alpha = self.alpha / self.alpha_update_rate
-        
-    def get_last_update(self):
-        return self.last_Q_update
-        
+        self.init_features()
+        if len(train_set) > 0:
+            self.load_training(train_set)
         
     def possible_transition(self, state, action):
         # Convert action object to string
@@ -212,11 +200,6 @@ class AdvancedQAgent(Agent):
             self.identity = state['self']
         self.state = state
         self.actions = actions
-        
-        # Update Q
-        self.previous_state_id = self.current_state_id
-        self.current_state_id = self.classify_state(state, to='id')
-        self.update_Q(self.previous_state_id, self.last_action_id, reward, self.current_state_id)
     
     def act_old(self):
         # Return an action
@@ -245,29 +228,46 @@ class AdvancedQAgent(Agent):
         game.out("Deciding to do", action)
         return action
         
+    def train(self, state, action, reward):
+        self.state = state
+        action_type = self.classify_action(action, to='name')
+        output = self.get_entry(action, action_type)
+        output['expected_gain'] = reward
+        output['action_type'] = self.convert_action(action_type, to='id')
+        
+        self.add_entry(output)
+        
+    def predict(self, options_dic):
+        options = []
+        for fs in options_dic:
+            new_entry = np.zeros(len(self.features))
+            for feature, val in fs.items():
+                if feature in self.features:
+                    feature_index = self.features_index[feature]
+                    new_entry[feature_index] = val
+            options.append(new_entry)
+        d = np.array(options)
+        x = d[:, :-1]
+        y = self.classifier.predict(x)
+        return int(np.argmax(y))        
+        
     def act(self):
-        actions_by_type = {action_id: [] for action_id in range(len(self.action_space))}
+        if self.training_phase:
+            return random.choice(self.actions)
+            
+        option_space = []
         for action in self.actions:
-            a = self.classify_action(action, to='id')
-            actions_by_type[a].append(action)
+            action_type = self.classify_action(action, to='name')
+            output = self.get_entry(action, action_type)
+            output['action_type'] = self.convert_action(action_type, to='id')
+            option_space.append(output)
         
-        s = self.get_current_state_id()
-        actions = self.Q[s,:].copy()       
+        best_action_index = self.predict(option_space)
+        return self.actions[best_action_index]
         
-        next_action_type = self.epsilon_greedy_policy(actions)
-        possible_actions = actions_by_type[next_action_type]
-        while len(possible_actions) == 0:
-            actions[next_action_type] = 0
-            next_action_type = self.softmax_policy(actions)
-            possible_actions = actions_by_type[next_action_type]
-        action_name = self.convert_action(next_action_type, to='name')
-        action = self.choose(possible_actions, action_name)
-        
-        self.last_action_id = next_action_type
-        
-        self.next_action = action
-        game.out("Deciding to do", action)
-        return action
+    def load_training(self, d):
+        self.data = d.copy()
+        self.stop_training()
         
     def softmax_policy(self, actions):        
         p = normalize(actions)
@@ -278,10 +278,48 @@ class AdvancedQAgent(Agent):
         
     def epsilon_greedy_policy(self, actions):
         if random.random() < self.epsilon:
-            return int(random.randint(0, len(actions) - 1))
+            return random.randint(0, len(actions) - 1)
         else:
-            return int(np.argmax(actions))
+            return np.argmax(actions)
+    
+    def init_features(self):
+        self.features = [
+            'current_score',
+            'best_adv_score',
+            'nb_available_colors',
+            'nb_full_available_colors',
+            'hand_size',
+            'hand_slot_gain',
+            'current_step',
+            'action_type',
+            'prestige_gain',
+            'bonus_gain',
+            'card_gain',
+            'token_loss',
+            'free_slot_bonus',
+            'allow_reserve_bonus',
+            'fill_slot_malus',
+            'unlock_prestige',
+            'unlock_card',
+            'over_max_token',
+            'gold_token_gain',
+            'can_buy_next_turn',
+            'reserved_card_price',
+            'expected_gain'
+        ]
+        self.features_index = {name: index for index, name in enumerate(self.features)}
+        self.data = []
         
+    def add_entry(self, fs):
+        new_entry = np.zeros(len(self.features))
+        for feature, val in fs.items():
+            if feature in self.features:
+                feature_index = self.features_index[feature]
+                new_entry[feature_index] = val
+        entry_pos = len(self.data)
+        self.data.append(new_entry)
+        return entry_pos
+                
         
     def choose(self, action_set, action_type=None):
         if random.random() < self.epsilon:
@@ -302,28 +340,26 @@ class AdvancedQAgent(Agent):
         if not comes_from_hand:
             i, j = card_coords
         card = self.identity.hand[card_coords] if comes_from_hand else self.state['cards'][i][j]
-        free_slot_bonus = 0
-        w_0 = 0.2
-        w_1 = 1
-        w_2 = 1/7
-        w_3 = 1/4
+        output = self.init_new_entry()
         # Free a slot in hand = extra bonus
         if comes_from_hand:
+            output['hand_slot_gain'] = 1
             if len(self.identity.hand) == game.MAX_RESERVED_CARDS:
-                free_slot_bonus = w_1
+                output['allow_reserve_bonus'] = 1
+                output['free_slot_bonus'] = 1
             else:
-                free_slot_bonus = w_0
+                output['free_slot_bonus'] = 1
         prestige_gain = card.prestige
         if len([n.prestige for n in self.state['tiles'] if card.unlock_noble(self.identity, n)]) > 0:
             prestige_gain += 3
-        price_malus = w_2 * sum([amount for color, amount in self.identity.compute_discounted_price(card).items()])
-        price_malus += w_3 * card.price[game.JOKER_COLOR]
+        output['prestige_gain'] = prestige_gain
+        output['token_loss'] = sum([amount for color, amount in self.identity.compute_discounted_price(card).items()])
         
-        return prestige_gain + free_slot_bonus - price_malus
+        return output
         
     def _heuristic_take_3(self, action):
         color_list = action['params']
-        
+        output = self.init_new_entry()
         player_after = self.identity.duplicate()
         for color in color_list:
             player_after.tokens[color] += 1
@@ -337,25 +373,22 @@ class AdvancedQAgent(Agent):
                         nb_can_buy_prestige += 1
                     else:
                         nb_can_buy += 1
-        card_value = 1
-        # Proba that a card disappears before next turn
-        p = 0.2
-        if self.identity.prestige >= game.PRESTIGE_TARGET - 3:
-            prestige_value = 10
-            p = 0.3
-        else:
-            prestige_value = 3
-        
+        n_tokens = sum([token_quantity for token, token_quantity in self.identity.tokens.items()])
+        if n_tokens + 3 > 10:
+            output['over_max_token'] = n_tokens-7
+        output['unlock_card'] = nb_can_buy
+        output['unlock_prestige'] = nb_can_buy_prestige       
         
         # Also : add a bonus if taking these tokens blocks another player
         
-        return (1-p**nb_can_buy) * card_value + (1 - p**nb_can_buy_prestige) * prestige_value
+        return output
+        
         
     def _heuristic_take_2(self, action):
         color = action['params']
         player_after = self.identity.duplicate()
         player_after.tokens[color] += 2
-        
+        output = self.init_new_entry()
         nb_can_buy = 0
         nb_can_buy_prestige = 0
         for card_list in self.state['cards']:
@@ -365,27 +398,24 @@ class AdvancedQAgent(Agent):
                         nb_can_buy_prestige += 1
                     else:
                         nb_can_buy += 1
-        card_value = 1
-        # Proba that a card disappears before next turn
-        p = 0.2
-        if self.identity.prestige >= game.PRESTIGE_TARGET - 3:
-            prestige_value = 10
-            p = 0.3
-        else:
-            prestige_value = 3
-        
-        
+        n_tokens = sum([token_quantity for token, token_quantity in self.identity.tokens.items()])
+        if n_tokens + 2 > 10:
+            output['over_max_token'] = n_tokens-8
+        output['unlock_card'] = nb_can_buy
+        output['unlock_prestige'] = nb_can_buy_prestige
         # Also : add a bonus if taking these tokens blocks another player
         
-        return (1-p**nb_can_buy) * card_value + (1 - p**nb_can_buy_prestige) * prestige_value
+        return output
         
     def _heuristic_do_nothing(self, action):
-        return 1
+        output = self.init_new_entry()
+        output['do_nothing_malus'] = 1000000
+        return output
         
     def _heuristic_reserve(self, action):
         [card_origin, coords] = action['params']
         if card_origin == 'from_deck':
-            return -1
+            return {}
         else:
             i, j = coords
         card = self.state['cards'][i][j]
@@ -394,16 +424,14 @@ class AdvancedQAgent(Agent):
         can_buy_next_turn = (len(s) == 0) or (len(s) == 1 and s[0] <= 2) or (len(s) <= 3 and sum([m<=1 for m in s])==len(s)) 
         price_malus = sum([amount for color, amount in self.identity.compute_discounted_price(card).items()])
         
-        # Price malus weight
-        w_0 = 1
-        # Possible prestige gain weight
-        w_1 = 1
-        # Possible to buy card ?
-        w_3 = 30
-        new_card_bonus = w_3 if can_buy_next_turn else 1
+        output = self.init_new_entry()
+        output['hand_slot_gain'] = -1
+        output['gold_token_gain'] = 1
+        output['fill_slot_malus'] = 1
+        output['can_buy_next_turn'] = 1 if can_buy_next_turn else 0
+        output['reserved_card_price'] = price_malus
         
-        # We could add a bonus if the yellow token allows us to gain new cards ...
-        return new_card_bonus * w_1 * card.prestige - w_0 * price_malus
+        return output
         
     def _heuristic_buy_card(self, action):
         comes_from_hand = action['params'][0] == 'from_hand'
@@ -411,24 +439,21 @@ class AdvancedQAgent(Agent):
         if not comes_from_hand:
             i, j = card_coords
         card = self.identity.hand[card_coords] if comes_from_hand else self.state['cards'][i][j]
-        free_slot_bonus = 0
-        w_0 = 0.2
-        w_1 = 1
-        w_2 = 1/7
-        w_3 = 1/4
+        output = self.init_new_entry()
         # Free a slot in hand = extra bonus
         if comes_from_hand:
+            output['free_slot_bonus'] = 1
             if len(self.identity.hand) == game.MAX_RESERVED_CARDS:
-                free_slot_bonus = w_1
-            else:
-                free_slot_bonus = w_0
+                output['allow_reserve_bonus'] = 1
+        if sum([card.unlock_noble(self.identity, noble) for noble in self.state['tiles']]) > 0:
+            output['unlock_prestige'] = 1
+        output['prestige_gain'] = card.prestige
+        output['card_gain'] = 1
+        output['token_loss'] = sum([amount for color, amount in self.identity.compute_discounted_price(card).items()])
         
-        price_malus = w_2 * sum([amount for color, amount in self.identity.compute_discounted_price(card).items()])
-        price_malus += w_3 * card.price[game.JOKER_COLOR]
+        return output
         
-        return free_slot_bonus - price_malus
-        
-    def heuristic(self, action, action_type):
+    def get_entry(self, action, action_type):
         if action_type == 'take_3':
             return self._heuristic_take_3(action)
         elif action_type == 'take_2':
@@ -442,9 +467,21 @@ class AdvancedQAgent(Agent):
         elif action_type == 'do_nothing':
             return self._heuristic_do_nothing(action)
         else:
-            game.warning("/!\ Unknown action type in heuristic filtering", action, action_type)
-            return 0
+            game.warning("/!\ Unknown action type in heuristic filtering", action)
+            return {}
+    
+    def init_new_entry(self):
+        token_quantities = [token_quantity for color, token_quantity in self.state['tokens'].items() if color != game.JOKER_COLOR]
         
+        output = {}
+        output['current_score'] = 15 - self.identity.prestige
+        output['best_adv_score'] = min([15 - p['prestige'] for p in self.state['players']])
+        output['nb_available_colors'] = sum([token_q>0 for token_q in token_quantities])
+        output['nb_full_available_colors'] = sum([token_q>=game.MIN_TOKEN_FOR_TAKE_2 for token_q in token_quantities])
+        output['hand_size'] = len(self.identity.hand)
+        
+        # sum([token_q>=game.MIN_TOKEN_FOR_TAKE_2 for token_q in token_quantities])
+        return output
     
     def observe_and_act(self, state, reward, done, actions):
         # Get current state
@@ -463,6 +500,15 @@ class AdvancedQAgent(Agent):
         self.current_state_id = self.classify_state(state, to='id')
         self.previous_state_id = self.current_state_id
         self.nb_games += 1
+        
+    def stop_training(self):
+        self.training_phase = False
+        self.is_trained = True
+        train = np.array(self.data)
+        x, y = train[:,:-1], train[:,-1]
+        self.classifier = linear_model.RidgeCV()
+        self.classifier.fit(x, y)
+        
         
     def state_id_to_list(self, state_id):
         '''

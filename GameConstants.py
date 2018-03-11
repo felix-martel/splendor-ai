@@ -42,7 +42,7 @@ def get_tokens():
     return tokens
 
 # -- UTILITY FUNCTIONS -- #
-def out(*args, verbose=1):
+def out(*args, verbose=2):
     display = VERBOSE >= verbose
     if display:
         print(*args)

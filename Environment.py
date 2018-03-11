@@ -13,7 +13,7 @@ class Environment:
         self.step = 0
         self.GAME_ENDED = False
         
-        print("New game")
+        game.out("New game")
     
     
     def reset(self):        
@@ -44,7 +44,7 @@ class Environment:
         return(state, reward, end, debug)
         
     def autoplay(self):
-        for player_id in range(1, game.NB_PLAYERS):
+        for player_id in range(self.state.current_player+1, game.NB_PLAYERS):
             current_player = self.state.get_player(player_id)
             self.take_random_action(current_player)
     
@@ -56,14 +56,27 @@ class Environment:
         action = random.choice(self.get_possible_actions(player))
         return(action)
         
-    def get_player(self):
-        return self.state.players[0]
+    def get_player(self, player_id = 0):
+        return self.state.get_player(player_id)
         
     def get_visible_state(self,player):
         return self.state.visible(player)
         
-    def winner(self):
-        return self.state.winner
+    def winner(self, how='name'):
+        if how == 'name':
+            return self.state.winner_name
+        elif how == 'pos':
+            return self.state.winner_id
+        else:
+            return self.state.winner
+        
+    def get_best_adversary_score(self):
+        leaderboard = [(p.position, p.prestige) for p in self.state.players]
+        leaderboard.sort(key=lambda x: -x[1])
+        if leaderboard[0][0] == 0:
+            return leaderboard[1][1]
+        else:
+            return leaderboard[0][1]
 
     def get_possible_actions(self, player):
         actions = []
@@ -142,12 +155,13 @@ class Environment:
                 actions.append(new_action)
                 
         # Else: do nothing
-        do_nothing = game.POSSIBLE_ACTIONS[4]
-        new_action = {
-            'type': do_nothing,
-            'params': None
-            }
-        actions.append(new_action)
+        if len(actions) == 0:
+            do_nothing = game.POSSIBLE_ACTIONS[4]
+            new_action = {
+                'type': do_nothing,
+                'params': None
+                }
+            actions.append(new_action)
            
         
         return(actions)
